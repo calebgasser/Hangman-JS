@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang='en-us'>
+	<head>
+		<meta charset="utf-8">
+
+		<!-- CSS -->
+			<!-- Meyer Reset-->
+			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+			<!-- Tether -->
+			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/css/tether.min.css">
+			<!-- Twitter Bootstrap-->
+			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+			<!-- Google Fonts-->
+			<link href="https://fonts.googleapis.com/css?family=Bungee|Bungee+Shade|VT323" rel="stylesheet">
+			<!-- Font Awesome-->
+			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<!-- My own css-->
+			<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+		<!-- /CSS -->
+
+		<!-- JavaScript -->
+			<!-- jQuery -->
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<!-- Tether -->
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+			<!-- Twitter Bootstrap -->
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+			<!-- My own JavaScript-->
+			<script type="text/javascript" src="hangman.js"></script>
+		<!-- /JavaScript --> 
+		<title>Hangman</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<div class="img-container">
+						<h1 class="title">Hangman</h1>
+						<img class="arcade" src="./assets/images/Hangman.png">
+						<div class="gamescreen positioning">
+							<canvas id="myCanvas" height="262" width="638">Your browser does not support canvas.</canvas>
+						</div>
+						<div class="jumbotron">
+						<button class='soundbutton' id="sound"><i class="fa fa-music fa-3x"></i></button>
+						<h1>Instructions</h1>
+						<hr/>
+						<p>You will given six guesses to complete the word. Guessed
+						letters will be recorded for you. You win if you complete the word
+						before the man gets hanged!</p>
+						<h2>Press any key to get started!</h2>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

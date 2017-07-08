@@ -1,5 +1,10 @@
 var backgroudMusic = new Audio('./assets/audio/main_theme_01.wav');
+var winSound = new Audio('./assets/audio/win.wav');
+var loseSound = new Audio('./assets/audio/lose.wav');
+var wrongSound = new Audio('./assets/audio/wrong.wav');
+var correctSound = new Audio('./assets/audio/correct.wav');
 backgroudMusic.loop = true;
+backgroudMusic.volume = 0.2;
 backgroudMusic.play();
 var fps = 1000 / 60;
 
@@ -45,13 +50,15 @@ var game = {
 	processKey: function(key){
 		if(!game.hasWon && !game.hasLost){
 			if(game.currentWord.includes(key)){
+				correctSound.currentTime = 0;
+				correctSound.play();
 				for(var i = 0; i < game.currentWord.length;i++){
 					if(game.currentWord.charAt(i) === key){
 						game.displayWord = game.replaceAt(game.displayWord, i, key);
 					}
 				}
 				if(game.displayWord === game.currentWord){
-					console.log("Win");
+					winSound.play();
 					game.hasWon = true;
 					game.totalWins += 1;
 				}
@@ -59,7 +66,10 @@ var game = {
 				if(game.validate(key)){
 					game.lettersGuessed.push(key);
 					game.remainingGuesses -= 1;
+					wrongSound.currentTime = 0;
+					wrongSound.play();
 					if(game.remainingGuesses === 0){
+						loseSound.play();
 						game.hasLost = true;
 						game.totalLosses += 1;
 						game.displayWord = game.currentWord;

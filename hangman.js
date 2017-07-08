@@ -56,7 +56,6 @@ var background = {
 		for(var i = 0; i < background.particles.length; i++){
 			background.particles[i].lifeTime -= 1;
 			background.particles[i].anim -= 1;
-			console.log(background.particles[i].anim);
 			if(background.particles[i].anim <= 0){
 				if(background.particles[i].currentFrame >= background.particles[i].frames.length-1){
 					background.particles[i].currentFrame = 0;

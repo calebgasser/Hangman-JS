@@ -23,7 +23,10 @@ var game = {
 	hasLost: false,
 	remainingGuesses: 6,
 	//Didn't feel like going through the trouble of using an API.
-	randomWords: ['acorn','zebra','hello','sunset','javascript','nerd','loser','rockstar','banana'],
+	randomWords: ['acorn','zebra','hello','sunset','javascript','nerd','loser','rockstar','banana',
+	'monty', 'java', 'pneumonoultramicroscopicsilicovolcanoconiosis', 'tokyo', 'hangman', 
+	'anime', 'bird', 'toast','videogame','arcade','up','i','boston','carrot','warcraft','viking',
+	'westeros'],
 
 	init: function(){
 		game.clearGame();

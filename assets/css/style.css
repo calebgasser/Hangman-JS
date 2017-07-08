@@ -44,6 +44,13 @@ body{
 #myCanvas{
 	background-color: black;
 }
+
+#backgroundCanvas{
+	position:fixed;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+}
 @media screen and (max-width: 980px){
 
 }

@@ -204,7 +204,6 @@ $(function(){
 	setInterval(background.update,1000/30);
 	setInterval(game.update, fps);
 	$('#sound').on('click',function(){
-		console.log(backgroudMusic);
 		if(backgroudMusic.paused){
 			backgroudMusic.play();
 		} else {

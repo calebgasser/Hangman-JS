@@ -8,6 +8,8 @@ backgroudMusic.volume = 0.2;
 backgroudMusic.play();
 var fps = 1000 / 60;
 
+var glass = new Image();
+glass.src = './assets/images/glass_texture_clear.png';
 
 var game = {
 	canvas: {},
@@ -46,6 +48,10 @@ var game = {
 		}
 		game.ctx.fillText("Word(" + game.currentWord.length + " letters): " + game.displayWord, 10, 150);
 		game.ctx.fillText("Guessed: " + game.lettersGuessed.toString(), 10, 200);
+		glass.onload = function(){
+			game.ctx.drawImage(glass,0,0,638,262);
+		}
+		game.ctx.drawImage(glass,0,0,638,330);
 	},
 	processKey: function(key){
 		if(!game.hasWon && !game.hasLost){

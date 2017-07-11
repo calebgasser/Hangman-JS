@@ -1,11 +1,3 @@
-var backgroudMusic = new Audio('./assets/audio/main_theme_01.wav');
-var winSound = new Audio('./assets/audio/win.wav');
-var loseSound = new Audio('./assets/audio/lose.wav');
-var wrongSound = new Audio('./assets/audio/wrong.wav');
-var correctSound = new Audio('./assets/audio/correct.wav');
-backgroudMusic.loop = true;
-backgroudMusic.volume = 0.2;
-backgroudMusic.play();
 var fps = 1000 / 60;
 
 var glass = new Image();
@@ -15,6 +7,24 @@ function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+}
+
+function isMobile(){
+	return /Android|webOS|iPhone|iPad|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
+}
+
+var soundManager = {
+	backgroundMusic: new Audio('./assets/audio/main_theme_01.wav'),
+	winSound: new Audio('./assets/audio/win.wav'),
+	loseSound: new Audio('./assets/audio/lose.wav'),
+	wrongSound: new Audio('./assets/audio/wrong.wav'),
+	correctSound: new Audio('./assets/audio/correct.wav'),
+
+	init: function(){
+		soundManager.backgroundMusic.loop = true;
+		soundManager.backgroundMusic.volume = 0.2;
+		soundManager.backgroundMusic.play();
+	}
 }
 
 var background = {
@@ -29,8 +39,6 @@ var background = {
 	init: function(){
 		background.canvas = document.getElementById('backgroundCanvas');
 		background.ctx = background.canvas.getContext('2d');
-		// background.ctx.canvas.width = window.innerWidth;
-		// background.ctx.canvas.height = window.innerHeight;
 		background.star[0] = new Image();
 		background.star[1] = new Image();
 		background.star[0].src = './assets/images/sparkle1.png';
@@ -146,15 +154,15 @@ var game = {
 	processKey: function(key){
 		if(!game.hasWon && !game.hasLost){
 			if(game.currentWord.includes(key)){
-				correctSound.currentTime = 0;
-				correctSound.play();
+				soundManager.correctSound.currentTime = 0;
+				soundManager.correctSound.play();
 				for(var i = 0; i < game.currentWord.length;i++){
 					if(game.currentWord.charAt(i) === key){
 						game.displayWord = game.replaceAt(game.displayWord, i, key);
 					}
 				}
 				if(game.displayWord === game.currentWord){
-					winSound.play();
+					soundManager.winSound.play();
 					game.hasWon = true;
 					game.totalWins += 1;
 				}
@@ -162,10 +170,10 @@ var game = {
 				if(game.validate(key)){
 					game.lettersGuessed.push(key);
 					game.remainingGuesses -= 1;
-					wrongSound.currentTime = 0;
-					wrongSound.play();
+					soundManager.wrongSound.currentTime = 0;
+					soundManager.wrongSound.play();
 					if(game.remainingGuesses === 0){
-						loseSound.play();
+						soundManager.loseSound.play();
 						game.hasLost = true;
 						game.totalLosses += 1;
 						game.displayWord = game.currentWord;
@@ -197,16 +205,24 @@ var game = {
 }
 
 $(function(){
+	console.log(isMobile());
+	if(isMobile()){
+		$("#mobileInput").html("<input class='form-control' id='mobileText' type='text' maxlength='1'></input>");
+		$("#mobileText").on('input', function(){
+			game.processKey($("#mobileText").val());
+			$("#mobileText").val("");
+		});
+	}
+	soundManager.init();
 	background.init();
 	game.init();
-
 	setInterval(background.update,1000/30);
 	setInterval(game.update, fps);
 	$('#sound').on('click',function(){
 		if(backgroudMusic.paused){
-			backgroudMusic.play();
+			soundManager.backgroudMusic.play();
 		} else {
-			backgroudMusic.pause();
+			soundManager.backgroudMusic.pause();
 		}
 	});
 	$(document).on('keyup', function(event){

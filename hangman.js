@@ -209,7 +209,7 @@ $(function(){
 	if(isMobile()){
 		$("#mobileInput").html("<input class='form-control' id='mobileText' type='text' maxlength='1' placeholder='Mobile Input Area'></input>");
 		$("#mobileText").on('input', function(){
-			game.processKey($("#mobileText").val());
+			game.processKey($("#mobileText").val().toLowerCase());
 			$("#mobileText").val("");
 		});
 	}

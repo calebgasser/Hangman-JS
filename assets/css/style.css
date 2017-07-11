@@ -54,6 +54,8 @@ body{
 
 #mobileText{
 	background-color: #ffcb15;
+	text-align: center;
+	color: white;
 }
 @media screen and (max-width: 980px){
 	.positioning{

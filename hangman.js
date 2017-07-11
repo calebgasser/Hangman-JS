@@ -207,7 +207,7 @@ var game = {
 $(function(){
 	console.log(isMobile());
 	if(isMobile()){
-		$("#mobileInput").html("<input class='form-control' id='mobileText' type='text' maxlength='1'></input>");
+		$("#mobileInput").html("<input class='form-control' id='mobileText' type='text' maxlength='1' placeholder='Mobile Input Area'></input>");
 		$("#mobileText").on('input', function(){
 			game.processKey($("#mobileText").val());
 			$("#mobileText").val("");
